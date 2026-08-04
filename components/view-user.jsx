@@ -9,11 +9,13 @@ const db = Array.from({length: 5}, () => generateProfile());
 
 const FlipCard = () => {
     const [users, setUsers] = useState(db);
-
     const childRefs = useRef([]);
+    const startX = useRef(0);
+    const startY = useRef(0);
+    const isDragging = useRef(false);
 
     const onSwipe = (direction, name_user) => {
-        Console.log(`Карточка ${name_user} улетела в ${direction}`)
+        console.log(`Карточка ${name_user} улетела в ${direction}`)
     }
 
     const onCardLeftScreen = (id) => {
@@ -21,7 +23,7 @@ const FlipCard = () => {
     }
 
     const swiped = (direction, id) => {
-        const index = db.findIndex(user => user.id === id);
+        const index = users.findIndex(user => user.id === id);
         if (index !== -1) {
             childRefs.current[index].swipe(direction);
         }
@@ -43,60 +45,41 @@ const FlipCard = () => {
                                 key={user.id}
                                 onSwipe={(dir) => onSwipe(dir, user.name)}
                                 onCardLeftScreen={() => onCardLeftScreen(user.id)}
-                                className="swipe-card"
                                 preventSwipe={['up', 'down']}
+                                className="swipe-card"
+                                swipeRequirementType="position" 
+                                swipeThreshold={100}
                             >
                                 <img 
                                     src={user.photo} 
                                     alt={user.name} 
                                     className="card-image" 
+                                    draggable='false'
                                 />
-                                <div className="swipe-card-text">
-                                    <span class='card-user-name'>
+                                <div className="swipe-card-bottom">
+                                    <span className='card-user-name'>
                                         {user.name}
                                     </span>
-                                    <p class='card-user-status'>
+                                    <p className='card-user-status'>
                                         {user.status}
                                     </p>
+                                    <div className="buttons-container">
+                                        <button 
+                                            className="btn btn-nope" 
+                                            onClick={() => swiped('left', user.id)}
+                                        >
+                                            ✕
+                                        </button>
+                                        <button 
+                                            className="btn btn-like" 
+                                            onClick={() => swiped('right', user.id)}
+                                        >
+                                            ♥
+                                        </button>
+                                    </div>
                                 </div>  
                             </TinderCard>
                         ))}
-                    </div>
-                </section>
-            </main>
-            <footer className="footer">
-            </footer>
-            
-        </>
-    )
-
-
-}
-
-function ViewUser() {
-    const user = generateProfile()
-    console.log('Ссылка на фото:', user.photo);
-    return (
-        <>
-            <header className="header">
-                <div className="container flip-header">
-
-                </div>
-            </header>
-            <main className="main">
-                <section className="card-user">
-                    <div 
-                        className="container card-user-container"
-                        style={{ 
-                            backgroundImage: `url(${user.photo}), url('../public/3d-cartoon-character.jpg')`
-                        }}
-                    >
-                        <span class='card-user-name'>
-                            {user.name}
-                        </span>
-                        <p class='card-user-status'>
-                            {user.status}
-                        </p>
                     </div>
                 </section>
             </main>
