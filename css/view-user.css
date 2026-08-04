@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+.card-user-container {
+    width: 300px;
+    height: 600px;
+    padding: 15px 15px;
+
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px sienna, solid;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.container {
+    margin: 0 auto;
+    color: #fff;
+}
+
+.card-user-name {
+    font-size: 25px;
+}
+
+.card-user-status {
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+    background-color: rgba(50, 50, 50, 0.6); 
+    border-radius: 15px; /* Скругление углов */
+    border-radius: 15px; /* Скругление углов */
+    padding: 10px;
+}

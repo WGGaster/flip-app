@@ -1,3 +1,8 @@
+.header {
+  background-color: rgb(5, 148, 236);
+  height: 50px;
+}
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;
