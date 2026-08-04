@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@faker-js/faker": "^10.5.0",
+    "@react-spring/web": "^10.1.2",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-tinder-card": "^1.6.4"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
