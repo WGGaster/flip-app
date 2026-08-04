@@ -44,9 +44,8 @@ const generateProfile = () => {
         status: faker.helpers.arrayElement(STATUS),
         distance: faker.number.int({'min': 1, 'max': 50}),
         photo: `https://i.pravatar.cc/400?img=${faker.number.int({ min: 1, max: 70 })}`,
-        interests: faker.helpers.arrayElements(INTERESTS, faker.number.int({ min: 3, max: 6 })),
-        verified: faker.datatype.boolean(0.7), // 70% верифицированы
-        online: faker.datatype.boolean(0.4),
+        interest: faker.helpers.arrayElement(INTERESTS),
+        online: faker.helpers.arrayElement(['нет', 'да']),
         lastActive: faker.date.recent({ days: 7 }).toISOString(),
         height: faker.number.int({ min: 155, max: 195 }),
         job: faker.helpers.arrayElement(JOBS)
