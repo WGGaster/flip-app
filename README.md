@@ -2,4 +2,5 @@
 В терминале вводим 2 команды:
  1. docker build -t flip-app .
  2. docker run -p 4173:4173 flip-app
+
 После запуска контейнера переходим по ссылке `http://localhost:4173/`
